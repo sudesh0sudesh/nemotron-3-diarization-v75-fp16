@@ -1,0 +1,135 @@
+{
+  "name": "nemotron-3-diarization-v75-fp16",
+  "version": "1.0.0",
+  "format": "qnn-context-binaries",
+  "base_model": "nvidia/Nemotron-3-Diarization",
+  "revision": "f667ed73aee57d40cc39428eb768b4fd87a0a29e",
+  "license": "OpenMDW-1.1",
+  "origin": "NVIDIA Corporation",
+  "target": {
+    "board": "Arduino VENTUNO Q",
+    "soc_model": 82,
+    "chipset": "QCS8275 / IQ-8275",
+    "hexagon": "V75",
+    "backend": "QNN HTP"
+  },
+  "precision": "fp16",
+  "qairt_compile_version": "2.45",
+  "tested_qairt_runtime_version": "2.46",
+  "audio_sample_rate": 16000,
+  "speaker_channels": 8,
+  "activity_frame_ms": 10,
+  "profile_encoder_frame_ms": 80,
+  "profile": {
+    "cache": 264,
+    "fifo": 40,
+    "chunk": 340,
+    "lookahead": 40,
+    "update": 300
+  },
+  "host_stages": [
+    "audio decoding/resampling",
+    "exact log-mel frontend",
+    "valid embedding packing and masks",
+    "FP32 AOSC/FIFO state",
+    "probability segmentation and EOF handling"
+  ],
+  "sequence_and_attention_masks": "Independent masks: sequence-validity preserves the head's convolution boundary; additive attention mask zeroes valid keys and uses -10000 for invalid keys.",
+  "files": {
+    "projection.bin": {
+      "bytes": 1105920,
+      "sha256": "1facebaabbfb46f78c728ec1b074a535ca71dee389dc4504d89f99318c1f9af6"
+    },
+    "body.bin": {
+      "bytes": 224182272,
+      "sha256": "50e0513dd8cdd272dfebacbbd7d70872bb67821367ce4dba4cfffc1efa51d322"
+    },
+    "mel_filterbank.f32": {
+      "bytes": 131584,
+      "sha256": "f5608e00763a20a191022fbb00a43346db5f1ec06828a97a6f4157f7d02b76c8"
+    },
+    "silence.npy": {
+      "bytes": 2176,
+      "sha256": "61029c3996a8aa1ca858daee262fb811555edfbec3e822e45a1200a241c5db39"
+    }
+  },
+  "graphs": {
+    "projection": {
+      "inputs": [
+        {
+          "name": "mel",
+          "dtype": "float32",
+          "shape": [
+            1,
+            3040,
+            128
+          ],
+          "bytes": 1556480
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output_0",
+          "dtype": "float32",
+          "shape": [
+            1,
+            380,
+            512
+          ],
+          "bytes": 778240
+        }
+      ],
+      "file": "projection.bin",
+      "compile_job": "https://workbench.aihub.qualcomm.com/jobs/jp2r8r74g/"
+    },
+    "body": {
+      "inputs": [
+        {
+          "name": "embeddings",
+          "dtype": "float32",
+          "shape": [
+            1,
+            684,
+            512
+          ],
+          "bytes": 1400832
+        },
+        {
+          "name": "attention_mask",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1,
+            1,
+            684
+          ],
+          "bytes": 2736
+        },
+        {
+          "name": "valid_mask",
+          "dtype": "float32",
+          "shape": [
+            1,
+            684,
+            1
+          ],
+          "bytes": 2736
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output_0",
+          "dtype": "float32",
+          "shape": [
+            1,
+            5472,
+            8
+          ],
+          "bytes": 175104
+        }
+      ],
+      "file": "body.bin",
+      "compile_job": "https://workbench.aihub.qualcomm.com/jobs/jpe797415/"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "dataset": "AMI test SDM Array1 channel 1",
+  "recordings": 16,
+  "scored_uem_hours": 9.062184826111112,
+  "postprocessing": {
+    "threshold": 0.5,
+    "frame_resolution_ms": 10
+  },
+  "backends": {
+    "cpu": {
+      "der_percent": 11.365682417538002,
+      "nist_der_percent": 11.37,
+      "reference_speaker_seconds": 23930.535686999992,
+      "miss_seconds": 1403.5666870000011,
+      "false_alarm_seconds": 984.4410000000129,
+      "confusion_seconds": 331.861000000001,
+      "speaker_count_accuracy_percent": 87.5,
+      "speaker_count_mae": 0.125,
+      "audio_seconds": 32624.304,
+      "processing_seconds": 704.1610772919976,
+      "rtfx": 46.330740298034875,
+      "peak_rss_kib": 0
+    },
+    "npu": {
+      "der_percent": 11.683276645239655,
+      "nist_der_percent": 11.68,
+      "reference_speaker_seconds": 23930.535686999992,
+      "miss_seconds": 1513.9726869999959,
+      "false_alarm_seconds": 974.8070000000146,
+      "confusion_seconds": 307.0910000000006,
+      "speaker_count_accuracy_percent": 87.5,
+      "speaker_count_mae": 0.125,
+      "audio_seconds": 32624.304,
+      "processing_seconds": 258.5071953681763,
+      "rtfx": 126.20269216698264,
+      "peak_rss_kib": 361460
+    }
+  },
+  "per_recording": [
+    {
+      "id": "EN2002a",
+      "cpu_der_percent": 16.084369113298095,
+      "npu_der_percent": 16.1115193547676,
+      "difference_percentage_points": 0.027150241469506398
+    },
+    {
+      "id": "EN2002b",
+      "cpu_der_percent": 15.097092115534393,
+      "npu_der_percent": 15.174389427901877,
+      "difference_percentage_points": 0.0772973123674845
+    },
+    {
+      "id": "EN2002c",
+      "cpu_der_percent": 12.532554088850988,
+      "npu_der_percent": 12.481960862875741,
+      "difference_percentage_points": -0.050593225975246625
+    },
+    {
+      "id": "EN2002d",
+      "cpu_der_percent": 16.482592963529008,
+      "npu_der_percent": 16.267044634974983,
+      "difference_percentage_points": -0.21554832855402495
+    },
+    {
+      "id": "ES2004a",
+      "cpu_der_percent": 17.696011110907115,
+      "npu_der_percent": 16.896285496116434,
+      "difference_percentage_points": -0.799725614790681
+    },
+    {
+      "id": "ES2004b",
+      "cpu_der_percent": 9.101475913514975,
+      "npu_der_percent": 15.847653931067263,
+      "difference_percentage_points": 6.746178017552289
+    },
+    {
+      "id": "ES2004c",
+      "cpu_der_percent": 6.531581223840552,
+      "npu_der_percent": 6.640478229336681,
+      "difference_percentage_points": 0.10889700549612868
+    },
+    {
+      "id": "ES2004d",
+      "cpu_der_percent": 9.653619927622767,
+      "npu_der_percent": 9.628437055238923,
+      "difference_percentage_points": -0.025182872383844312
+    },
+    {
+      "id": "IS1009a",
+      "cpu_der_percent": 13.024048086383292,
+      "npu_der_percent": 13.352325105197128,
+      "difference_percentage_points": 0.32827701881383575
+    },
+    {
+      "id": "IS1009b",
+      "cpu_der_percent": 7.421181288260328,
+      "npu_der_percent": 7.445518769506012,
+      "difference_percentage_points": 0.024337481245683357
+    },
+    {
+      "id": "IS1009c",
+      "cpu_der_percent": 7.759808351500165,
+      "npu_der_percent": 7.8471808796929405,
+      "difference_percentage_points": 0.08737252819277597
+    },
+    {
+      "id": "IS1009d",
+      "cpu_der_percent": 15.796152442590339,
+      "npu_der_percent": 13.110068064425805,
+      "difference_percentage_points": -2.6860843781645336
+    },
+    {
+      "id": "TS3003a",
+      "cpu_der_percent": 12.401216841012168,
+      "npu_der_percent": 12.317463201632714,
+      "difference_percentage_points": -0.08375363937945401
+    },
+    {
+      "id": "TS3003b",
+      "cpu_der_percent": 7.09318750563156,
+      "npu_der_percent": 7.003377327725815,
+      "difference_percentage_points": -0.08981017790574519
+    },
+    {
+      "id": "TS3003c",
+      "cpu_der_percent": 7.57527256991549,
+      "npu_der_percent": 7.329118632563941,
+      "difference_percentage_points": -0.2461539373515489
+    },
+    {
+      "id": "TS3003d",
+      "cpu_der_percent": 10.433840063554273,
+      "npu_der_percent": 10.719363916678716,
+      "difference_percentage_points": 0.2855238531244435
+    }
+  ],
+  "fp16_der_regression_percentage_points": 0.3175942277016528,
+  "regression_gate_passed": true,
+  "independent_scorer": {
+    "url": "https://raw.githubusercontent.com/nryant/dscore/master/scorelib/md-eval-22.pl",
+    "sha256": "872aa955cbc3d57e6d4fd6fe2e699791739c1cb716cc89105bb4717415b9400d"
+  },
+  "scope": "Complete AMI SDM test, zero collar, overlap included, NVIDIA-linked forced-aligned labels; FP32 CPU reference runs on Mac, FP16 HTP runs on Arduino. This is not an exact reproduction of the BF16 model-card runtime."
+}
